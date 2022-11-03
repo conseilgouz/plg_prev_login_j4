@@ -1,8 +1,7 @@
 <?php
  /**
 * PrevLogin Profile  - Joomla plugin for Joomla 4.X 
-* Version			: 2.1.0
-* copyright 		: Copyright (C) 2021 ConseilGouz. All rights reserved.
+* copyright 		: Copyright (C) 2022 ConseilGouz. All rights reserved.
 * license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
 */
  defined('JPATH_BASE') or die;
