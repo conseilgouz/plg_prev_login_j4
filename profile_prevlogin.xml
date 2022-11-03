@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.10" type="plugin" group="user" method="upgrade">
+	<name>PLG_PREV_LOGIN</name>
+	<author>ConseilGouz</author>
+	<creationDate>November 2022</creationDate>
+	<copyright>(C) 2022 ConseilGouz. All rights reserved.</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<authorEmail>pascal.leconte@conseilgouz.com</authorEmail>
+	<authorUrl>www.conseilgouz.com</authorUrl>
+	<version>2.1.1</version>
+	<description>PLG_PREV_LOGIN_XML_DESCRIPTION</description>
+	<languages>
+		<language tag="en-GB">language/en-GB/profile_prevlogin.ini</language>
+		<language tag="eb-GB">language/en-GB/profile_prevlogin.sys.ini</language>
+		<language tag="fr-FR">language/fr-FR/profile_prevlogin.ini</language>
+		<language tag="fr-FR">language/fr-FR/profile_prevlogin.sys.ini</language>
+	</languages>
+	
+	<files>
+		<filename plugin="profile_prevlogin">profile_prevlogin.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<scriptfile>script.php</scriptfile>
+	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_prev_login_j4/master/plg_prev_login_changelog.xml</changelogurl>		
+	<updateservers>
+	<server type="extension" name="profile_prevlogin" priority="1">https://raw.githubusercontent.com/conseilgouz/updates_github/master/plg_prev_login_update.xml</server>
+	</updateservers>
+	
+ </extension>
