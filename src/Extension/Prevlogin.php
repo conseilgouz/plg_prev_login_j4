@@ -1,10 +1,15 @@
 <?php
- /**
-* PrevLogin Profile  - Joomla plugin for Joomla 4.X/5.x
-* copyright 		: Copyright (C) 2023 ConseilGouz. All rights reserved.
-* license    		: http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
-*/
- defined('JPATH_BASE') or die;
+
+/**
+ * @package     Joomla.Plugin
+ * @subpackage  User.profile
+ *
+ * @copyright   (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
+ * @license     GNU General Public License version 2 or later; see LICENSE.txt
+ */
+
+namespace ConseilGouz\Plugin\User\Prevlogin\Extension;
+
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Form\Form;
 use Joomla\CMS\Factory;
@@ -13,9 +18,21 @@ use Joomla\CMS\User\UserHelper;
 use Joomla\Database\Exception\ExecutionFailureException;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\Utilities\ArrayHelper;
+use Joomla\Database\DatabaseAwareTrait;
 
-class plgUserprofile_prevlogin extends CMSPlugin
-  {
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+
+/**
+ * An example custom profile plugin.
+ *
+ * @since  1.6
+ */
+final class Prevlogin extends CMSPlugin
+{
+    use DatabaseAwareTrait;
+
 	public function onUserLogin($user, $options = array())
 	{
 		$user	= $this->_getUser($user, $options);
@@ -117,4 +134,4 @@ class plgUserprofile_prevlogin extends CMSPlugin
 		return $instance;
 	}
  
- }
+}

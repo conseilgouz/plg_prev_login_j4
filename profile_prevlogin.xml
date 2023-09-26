@@ -9,17 +9,25 @@
 	<authorUrl>www.conseilgouz.com</authorUrl>
 	<version>2.2.0</version>
 	<description>PLG_PREV_LOGIN_XML_DESCRIPTION</description>
+	<namespace path="src">ConseilGouz\Plugin\User\Prevlogin</namespace>
 	<languages>
 		<language tag="en-GB">language/en-GB/plg_user_profile_prevlogin.ini</language>
 		<language tag="eb-GB">language/en-GB/plg_user_profile_prevlogin.sys.ini</language>
 		<language tag="fr-FR">language/fr-FR/plg_user_profile_prevlogin.ini</language>
 		<language tag="fr-FR">language/fr-FR/plg_user_profile_prevlogin.sys.ini</language>
 	</languages>
-	
 	<files>
-		<filename plugin="profile_prevlogin">profile_prevlogin.php</filename>
+		<folder plugin="profile_prevlogin">services</folder>
+		<folder>src</folder>
 		<filename>index.html</filename>
 	</files>
+	<config>
+		<fields name="params" >
+			<fieldset name="basic" group="settings" label="JOPTIONS" addfieldprefix="ConseilGouz\Plugin\User\Prevlogin\Field">
+				<field name="version" type="version" extension="AUTOREADMORE" margintop="-3em" xml="/plugins/user/profile_prevlogin/profile_prevlogin.xml"/>
+			</fieldset>
+		</fields>
+	</config>
 	<scriptfile>script.php</scriptfile>
 	<changelogurl>https://raw.githubusercontent.com/conseilgouz/plg_prev_login_j4/master/profile_prevlogin_changelog.xml</changelogurl>		
 	<updateservers>
