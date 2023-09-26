@@ -12,6 +12,7 @@
         </fix>
 		<change>
 			<item>Plugin as service</item>
+			<item>Dynamic version from manifest file</item>
 		</change>
 	</changelog>
 	<changelog>
