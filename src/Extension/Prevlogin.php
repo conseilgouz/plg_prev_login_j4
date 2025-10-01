@@ -1,24 +1,23 @@
 <?php
-
 /**
- * @package     Joomla.Plugin
- * @subpackage  User.profile
- *
- * @copyright   (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
- * @license     GNU General Public License version 2 or later; see LICENSE.txt
- */
+* Prev Login Plugin  - Joomla 4.x/5.x/6.x Plugin 
+* Package			: Prev Login
+* copyright 		: Copyright (C) 2025 ConseilGouz. All rights reserved.
+* license    		: https://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+*/
 
 namespace ConseilGouz\Plugin\User\Prevlogin\Extension;
 
-use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\CMS\Form\Form;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Form;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\User\User;
 use Joomla\CMS\User\UserHelper;
-use Joomla\Database\Exception\ExecutionFailureException;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\Utilities\ArrayHelper;
 use Joomla\Database\DatabaseAwareTrait;
+use Joomla\Database\DatabaseInterface;
+use Joomla\Database\Exception\ExecutionFailureException;
+use Joomla\Utilities\ArrayHelper;
 
 // phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
@@ -40,7 +39,7 @@ final class Prevlogin extends CMSPlugin
 		{
 			try
 			{
-				$db = Factory::getDbo();
+				$db = Factory::getContainer()->get(DatabaseInterface::class);
 		        $query = $db->getQuery(true)
 		        ->delete('#__user_profiles')
 				->where('user_id = '.$user->id.' AND profile_key LIKE \'profile_prevlogin\'');
@@ -94,7 +93,7 @@ final class Prevlogin extends CMSPlugin
 		{
 			try
 			{
-				$db = Factory::getDbo();
+				$db = Factory::getContainer()->get(DatabaseInterface::class);
 		        $query = $db->getQuery(true)
 		        ->delete('#__user_profiles')
 				->where('user_id = '.$userId .' AND profile_key LIKE "profile_prevlogin"');
