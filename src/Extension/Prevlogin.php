@@ -17,23 +17,34 @@ use Joomla\CMS\User\UserHelper;
 use Joomla\Database\DatabaseAwareTrait;
 use Joomla\Database\DatabaseInterface;
 use Joomla\Database\Exception\ExecutionFailureException;
+use Joomla\Event\SubscriberInterface;
 use Joomla\Utilities\ArrayHelper;
 
-// phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
-// phpcs:enable PSR1.Files.SideEffects
 
-/**
- * An example custom profile plugin.
- *
- * @since  1.6
- */
-final class Prevlogin extends CMSPlugin
+final class Prevlogin extends CMSPlugin  implements SubscriberInterface
 {
     use DatabaseAwareTrait;
 
-	public function onUserLogin($user, $options = array())
+    /**
+     * Returns an array of events this subscriber will listen to.
+     *
+     * @return array
+     *
+     * @since   5.3.0
+     */
+    public static function getSubscribedEvents(): array
+    {
+        return [
+            'onUserLogin' => 'onUserLogin',
+            'onUserAfterDelete' => 'onUserAfterDelete',
+        ];
+    }
+
+	public function onUserLogin($event) //$user, $options = array())
 	{
+        $user       = $event[0];
+        $options    = $event[1];
 		$user	= $this->_getUser($user, $options);
 		if ($user->id)
 		{
@@ -81,8 +92,11 @@ final class Prevlogin extends CMSPlugin
 	 * @param	boolean		$success	True if user was succesfully stored in the database
 	 * @param	string		$msg		Message
 	 */
-	function onUserAfterDelete($user, $success, $msg)
+	function onUserAfterDelete($event) // $user, $success, $msg)
 	{
+        $user       = $event[0];
+        $success    = $event[1];
+        $msg        = $event[2];
 		if (!$success) {
 			return false;
 		}
